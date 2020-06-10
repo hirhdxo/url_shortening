@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Musinsa</title>
+    </head>
+    <style>
+        body {
+            background: cornsilk;
+        }
+
+        p {
+            font-size: 40px;
+        }
+
+        .wrap {
+            text-align: center;
+            margin-top: 15%;
+        }
+
+        textarea {
+            width: 20%;
+            height: 10%;
+        }
+
+        input[type="text"] {
+            margin-top: 20px;
+            width: 20%;
+            height: 22px;
+        }
+    </style>
+    <body>
+        <div class="wrap">
+            <p>Musinsa Url Shortening</p>
+            
+            <textarea id="long_url"></textarea><br><br>
+            <input type="text" readonly id="short_url"><br><br>
+            <input type="button" id="convert_btn" value="Convert">
+        </div>
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+
+    <script>
+        $(function() {
+            $("#convert_btn").click(function () {
+                $("#short_url").val("");
+
+                var data = {};
+                data.url = $("#long_url").val();
+
+                $.ajax({
+                    url:'convert',
+                    type:'POST',
+                    contentType: "application/json",
+                    data : JSON.stringify(data),
+                    complete:function(data) {
+                        if(data.responseJSON.status == 0) {
+                            $("#short_url").val(data.responseJSON.shortUrl);
+                        }
+
+                        alert(JSON.stringify(data));
+                        console.log(data.responseJSON);
+                    }
+                });
+            });
+        });
+    </script>
+    </body>
+</html>
