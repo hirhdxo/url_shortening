@@ -14,11 +14,12 @@ public class ApiResponse<T> {
 
     @Getter
     public enum ApiStatus {
-        UNKNOWN(-1, "알 수 없는 에러"),
-        SUCCEEDED(0, "정상"),
-        NOT_CONTAIN_SCHEME(1, "http 또는 https를 포함하여 입력해 주세요."),
-        VALIDATION_ERROR(2, "잘못된 주소 URL입니다. 입력한 주소를 확인해 주세요."),
-        NOT_EXIST_URL(3, "존재하지 않은 URL입니다. 입력한 주소를 확인해 주세요.");
+        UNKNOWN(-1, "Unknown Error"),
+        SUCCEEDED(0, "SUCCEEDED"),
+        NOT_CONTAIN_SCHEME(1, "Please include http or https."),
+        VALIDATION_ERROR(2, "Invalid address. Please check the address you entered."),
+        NOT_EXIST_URL(3, "Not exist address. Please check the address you entered."),
+        EXCEED_MAX_LENGTH(4, "exceed max length. The address length is less than 2083.");
 
         private int status;
         private String message;

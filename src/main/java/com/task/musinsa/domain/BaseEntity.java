@@ -17,10 +17,16 @@ import java.time.Instant;
 @EntityListeners(value = AuditingEntityListener.class)
 @EqualsAndHashCode(of = "id")
 public abstract class BaseEntity {
+    /**
+     * ID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 생성 날짜
+     */
     @Setter
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ssZ", timezone = "UTC")

@@ -13,11 +13,8 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.transaction.Transactional;
 import java.io.IOException;
 
-@Transactional
-@SpringBootTest
 @AutoConfigureMockMvc
-@ExtendWith(SpringExtension.class)
-public abstract class BaseSpringMockTest<T> {
+public abstract class BaseSpringMockTest<T> extends BaseSpringTest {
     @Autowired
     protected MockMvc mockMvc;
 

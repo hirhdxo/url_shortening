@@ -1,5 +1,6 @@
 service:
   domain: http://localhost:8080/
+  url-max-length: 2083
 
 spring:
   datasource:

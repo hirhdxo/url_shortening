@@ -10,8 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public abstract class BaseSpringTest {
-    protected static final String VALID_TEST_URL = "http://localhost:8080";
+    protected static final String VALID_TEST_URL = "http://ktko.tistory.com";
     protected static final String VALID_TEST_SHORT_URL = "12345678";
+    protected static final String INVALID_TEST_URL = "http://localhost:8080";
     protected static final String INVALID_TEST_SHORT_URL = "123456789";
 
     protected static final String SERVICE_DOMAIN = "http://musinsa.com/";

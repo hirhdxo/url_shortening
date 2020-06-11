@@ -6,8 +6,12 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 @Data
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class UrlData {
     private Long count;
     private String url;
@@ -23,9 +27,14 @@ public class UrlData {
         String url;
 
         public boolean isContainSchema() {
-            String[] urlFragments = url.split("://");
+            try {
+                URL url = new URL(this.url);
+                url.getProtocol();
+            } catch (MalformedURLException e) {
+                return false;
+            }
 
-            return urlFragments.length == 2;
+            return true;
         }
     }
 

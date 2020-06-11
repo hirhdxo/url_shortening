@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class WebConfig {
+public class Config {
     @Bean
     UrlValidator urlValidator() {
-        UrlValidator urlValidator = new UrlValidator(new String[] {"http", "https", ""});
+        UrlValidator urlValidator = new UrlValidator(new String[] {"http", "https"});
 
         return urlValidator;
     }
