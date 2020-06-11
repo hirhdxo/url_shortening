@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
     @Bean
     UrlValidator urlValidator() {
-        UrlValidator urlValidator = new UrlValidator(new String[] {"http", "https"});
-
-        return urlValidator;
+        return new UrlValidator(new String[] {"http", "https"});
     }
 }

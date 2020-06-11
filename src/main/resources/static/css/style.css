@@ -1,0 +1,23 @@
+body {
+    background: cornsilk;
+}
+
+p {
+    font-size: 40px;
+}
+
+.wrap {
+    text-align: center;
+    margin-top: 15%;
+}
+
+textarea {
+    width: 20%;
+    height: 10%;
+}
+
+input[type="text"] {
+    margin-top: 20px;
+    width: 20%;
+    height: 22px;
+}

@@ -1,8 +1,6 @@
 package com.task.musinsa.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.task.musinsa.BaseSpringMockTest;
-import com.task.musinsa.data.ApiResponse;
 import com.task.musinsa.data.UrlData.RequestUrlData;
 import com.task.musinsa.domain.UrlInfo;
 import com.task.musinsa.repository.UrlInfoRepository;

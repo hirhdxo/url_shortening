@@ -3,31 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Musinsa</title>
+
+        <link rel="stylesheet" th:href="@{/css/style.css}">
     </head>
     <style>
-        body {
-            background: cornsilk;
-        }
 
-        p {
-            font-size: 40px;
-        }
-
-        .wrap {
-            text-align: center;
-            margin-top: 15%;
-        }
-
-        textarea {
-            width: 20%;
-            height: 10%;
-        }
-
-        input[type="text"] {
-            margin-top: 20px;
-            width: 20%;
-            height: 22px;
-        }
     </style>
     <body>
         <div class="wrap">
@@ -55,10 +35,10 @@
                     complete:function(result) {
                         if(result.responseJSON.status == 0) {
                             $("#short_url").val(result.responseJSON.data.url);
+                            alert(result.responseJSON.data.url + "의 요청 회수 : " + result.responseJSON.data.count)
                         } else {
-                            alert(result.responseJson.data.message);
+                            alert(result.responseJSON.message);
                         }
-                        //alert(JSON.stringify(result));
                     }
                 });
             });

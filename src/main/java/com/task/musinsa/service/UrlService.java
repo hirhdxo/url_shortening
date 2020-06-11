@@ -11,7 +11,7 @@ public interface UrlService {
      * @param url
      * @return 입력받은 URL정보를 포함하는 UrlInfo를 리턴
      * */
-    UrlInfo convertShortUrl(String url);
+    UrlInfo getShortUrl(String url);
 
     /**
      * 8자리로 변환된 shortUrl의 정보를 반환한다.

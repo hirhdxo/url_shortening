@@ -34,8 +34,11 @@ dependencies {
 
     implementation 'com.fasterxml.jackson.core:jackson-core:2.10.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
+
     compile group: 'commons-validator', name: 'commons-validator', version: '1.6'
     compile('com.google.guava:guava:23.0-rc1')
+
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
 }
 
 test {

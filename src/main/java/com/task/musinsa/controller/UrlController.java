@@ -1,18 +1,16 @@
 package com.task.musinsa.controller;
 
 import com.task.musinsa.data.ApiResponse;
-import com.task.musinsa.data.UrlData;
 import com.task.musinsa.data.UrlData.RequestUrlData;
 import com.task.musinsa.data.UrlData.ResponseUrlData;
 import com.task.musinsa.domain.UrlInfo;
+import com.task.musinsa.properties.Properties;
 import com.task.musinsa.service.UrlService;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -24,14 +22,8 @@ import static com.task.musinsa.data.ApiResponse.ApiStatus.*;
 public class UrlController {
     private final UrlService urlService;
     private final UrlValidator urlValidator;
+    private final Properties properties;
 
-    /**
-     * 모든 브라우저 마다 허용하는 URL의 길이는 다르다.
-     * 확인해본 결과 IE 브라우저의 길이가 제일 적다. 2,083자
-     * https://support.microsoft.com/ko-kr/help/208427/maximum-url-length-is-2-083-characters-in-internet-explorer
-     */
-    @Value("${service.url-max-length}")
-    private int urlMaxLength;
 
     /**
      * 메인 페이지 이동
@@ -48,12 +40,12 @@ public class UrlController {
      */
     @ResponseBody
     @PostMapping("/convert")
-    public ApiResponse generateShortUrl(@RequestBody RequestUrlData urlData) {
-        if (urlData.getUrl().length() > urlMaxLength) return ApiResponse.fail(EXCEED_MAX_LENGTH);
+    public ApiResponse generateShortUrl(@RequestBody RequestUrlData urlData, BindingResult bindingResult) {
+        if (urlData.getUrl().length() > properties.getUrlMaxLength()) return ApiResponse.fail(EXCEED_MAX_LENGTH);
         if (!urlData.isContainSchema()) return ApiResponse.fail(NOT_CONTAIN_SCHEME);
         if (!urlValidator.isValid(urlData.getUrl())) return ApiResponse.fail(VALIDATION_ERROR);
 
-        UrlInfo urlInfo = urlService.convertShortUrl(urlData.getUrl());
+        UrlInfo urlInfo = urlService.getShortUrl(urlData.getUrl());
 
         return new ResponseUrlData(urlInfo);
    }

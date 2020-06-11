@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface UrlInfoRepository extends JpaRepository<UrlInfo, Long> {
     Optional<UrlInfo> findByUrl(String url);
     Optional<UrlInfo> findByShortUrl(String shortUrl);
+    long countByShortUrl(String shortUrl);
 }

@@ -13,7 +13,7 @@ public class UrlInfo extends BaseEntity {
     /**
      * URL
      */
-    @Column(unique = true)
+    @Column(length = 2083, unique = true)
     private String url;
 
     /**
@@ -51,7 +51,7 @@ public class UrlInfo extends BaseEntity {
     /**
      * 요청 시 요청 카운트를 1 증가시킨다.
      */
-    public void increaseCount() {
+    private void increaseCount() {
         this.count += 1;
     }
 
