@@ -1,6 +1,5 @@
 package com.task.musinsa.data;
 
-import com.task.musinsa.domain.UrlInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

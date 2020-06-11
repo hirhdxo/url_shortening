@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "service")
-public class Properties {
+public class WebProperties {
     private String domain;
 
     /**

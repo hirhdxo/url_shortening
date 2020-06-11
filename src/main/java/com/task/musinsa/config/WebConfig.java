@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Config {
+public class WebConfig {
     @Bean
     UrlValidator urlValidator() {
-        return new UrlValidator(new String[] {"http", "https"});
+        return new UrlValidator(new String[]{"http", "https"});
     }
 }

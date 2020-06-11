@@ -2,7 +2,7 @@ package com.task.musinsa.service;
 
 import com.google.common.hash.Hashing;
 import com.task.musinsa.domain.UrlInfo;
-import com.task.musinsa.properties.Properties;
+import com.task.musinsa.properties.WebProperties;
 import com.task.musinsa.repository.UrlInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class UrlServiceImpl implements UrlService {
     private final UrlInfoRepository urlInfoRepository;
-    private final Properties properties;
+    private final WebProperties webProperties;
 
     @Override
     @Transactional
@@ -26,9 +26,9 @@ public class UrlServiceImpl implements UrlService {
         UrlInfo urlInfo = null;
         if (optUrlInfo.isPresent()) {
             urlInfo = optUrlInfo.get();
-            urlInfo.updateUrlInfo(properties.getDomain());
+            urlInfo.updateUrlInfo(webProperties.getDomain());
         } else {
-            urlInfo = UrlInfo.of(url, convertShortUrl(url), properties.getDomain());
+            urlInfo = UrlInfo.of(url, convertShortUrl(url), webProperties.getDomain());
             urlInfoRepository.save(urlInfo);
         }
 
@@ -53,14 +53,12 @@ public class UrlServiceImpl implements UrlService {
         int tryCount = 1;
 
         while(urlInfoRepository.countByShortUrl(shortUrl) != 0) {
-            tryCount += 1;
-
             if (tryCount == 3) {
                 shortUrl = shortUrl.substring(1, shortUrl.length());
                 break;
             }
-
             shortUrl = generateHashValue(shortUrl);
+            tryCount += 1;
         }
 
         return shortUrl;

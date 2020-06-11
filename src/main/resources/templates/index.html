@@ -6,13 +6,10 @@
 
         <link rel="stylesheet" th:href="@{/css/style.css}">
     </head>
-    <style>
-
-    </style>
     <body>
         <div class="wrap">
-            <p>Musinsa Url Shortening</p>
-            
+            <h1>Musinsa Url Shortening</h1>
+            <p th:if="${error != null}" th:text="${error}"></p>
             <textarea id="long_url"></textarea><br><br>
             <input type="text" id="short_url"><br><br>
             <input type="button" id="convert_btn" value="Convert">
