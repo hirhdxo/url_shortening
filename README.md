@@ -1,5 +1,3 @@
-## 무신사 과제
-
 ### 프로젝트 : URL_Shortening
 
 주요 기능 : URL을 입력 받아 짧게 줄여주고, Shortening된 URL을 입력하면 원래 URL로 리다이렉트 시킨다.
